@@ -1,0 +1,9 @@
+# Installatiehandleiding SQL-SCCM
+Dit verslag bevat de uitleg om succesvol SQL-SCCM te installeren via de GUI
+## Vereisten
+- ...
+- ...
+
+## Aan de slag
+### Domein joinen
+...
