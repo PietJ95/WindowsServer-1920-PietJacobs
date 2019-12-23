@@ -7,9 +7,9 @@ Add-DnsServerForwarder -IPAddress $Forwarder -PassThru
 # -------------------------------------------------------------------------
 # Configure DHCP
 # -------------------------------------------------------------------------
-$ip = "172.16.1.10"
-$startScope = "172.16.1.100"
-$endScope = "172.16.1.250"
+$ip = "192.168.100.10"
+$startScope = "192.168.100.100"
+$endScope = "192.168.100.250"
 Install-WindowsFeature -Name 'DHCP' -IncludeManagementTools 
 Add-DhcpServerV4Scope -Name "DHCP Scope" -StartRange $startScope -EndRange $endScope -SubnetMask 255.255.255.0 
 Set-DhcpServerV4OptionValue -DnsServer $ip -Router $ip 
