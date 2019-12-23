@@ -1,10 +1,10 @@
 # -------------------------------------------------------------------------
 # Configure network settings
 # -------------------------------------------------------------------------
-$ip = "172.16.100.20"
-$gw = "172.16.100.10"
-New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $gw, $ip
+$ip = "192.168.100.20"
+$gw = "192.168.100.10"
+New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $gw, $ip
 
 # -------------------------------------------------------------------------
 # Join existing Domain

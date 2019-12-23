@@ -15,6 +15,8 @@ Add-DhcpServerV4Scope -Name "DHCP Scope" -StartRange $startScope -EndRange $endS
 Set-DhcpServerV4OptionValue -DnsServer $ip -Router $ip 
 Set-DhcpServerv4Scope -ScopeId $ip -LeaseDuration 1.00:00:00 
 Restart-Service DHCPServer -Force  
+#Authorize the DHCP server for our domain
+Add-DhcpServerInDC -DnsName WIN-DC1.piet.periode1
 # -------------------------------------------------------------------------
 # Install RRAS
 # -------------------------------------------------------------------------

@@ -3,8 +3,8 @@
 # Configure network settings
 # -------------------------------------------------------------------------
 $ip = "192.168.100.10"
-New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress $ip -PrefixLength 24 -DefaultGateway $ip
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $ip, "192.168.100.20"   
+New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $ip
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $ip, "192.168.100.20"   
 
 # -------------------------------------------------------------------------
 # Install Forest (Perform on Server Core)
