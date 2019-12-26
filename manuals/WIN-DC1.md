@@ -74,7 +74,7 @@ In Virtualbox:
     - Rechtermuis op de VM
     - `Klonen` -> Instellingen zoals de volgende afbeelding (naam is zelf te kiezen)
 
-    ![step4](images/WIN-DC1/WIN-DC1/Klonen1.PNG "Klonen")
+    ![step4](images/WIN-DC1/Klonen1.PNG "Klonen")
     - Kies vervolgens voor een `Volle kloon` en klik dan op `Kloon`
     - Laat deze VM voorlopig uit staan, we komen hier later op terug
 
