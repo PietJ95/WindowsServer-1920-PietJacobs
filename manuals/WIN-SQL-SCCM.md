@@ -1,0 +1,17 @@
+# Handleiding installatie DC1
+Prerequisites:
+- Virtualbox software
+- Kloon van Windows Server 2019
+- Voldoende RAM geheugen om VM's te runnen
+
+
+## Stap 1: VM aanmaken & configureren
+ 
+Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
+- Correcte intstellingen van de VM in Virtualbox
+- shared folder aanmaken (nu voor de map `WIN-SQL-SCCM`)
+
+## Stap 2: Scripts runnen
+Om deze scripts te runnen is er een internet verbinding nodig, dus verifiëer dat je host machine internet heeft (dit wordt automatisch gedeeld met de VM via NAT) -> Deze NAT netwerkkaart moet uiteindelijk wel verwijderd worden.
+
+**Opmerking**: Deze installatie kan heel lang duren naargelang de snelheid van je computer en het internet. Ook hier zijn meerdere reboots aanwezig.
