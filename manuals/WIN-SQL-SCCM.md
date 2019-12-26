@@ -8,7 +8,7 @@ Prerequisites:
 ## Stap 1: VM aanmaken & configureren
  
 Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
-- Correcte intstellingen van de VM in Virtualbox
+- Correcte instellingen van de VM in Virtualbox
 - shared folder aanmaken (nu voor de map `WIN-SQL-SCCM`)
 
 ## Stap 2: Scripts runnen

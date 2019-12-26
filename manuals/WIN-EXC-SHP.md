@@ -10,7 +10,7 @@ In de opgave stond er dat we een Windows Server 2019 OS moesten runnen met Excha
 
 We gaan dus gebruik maken van Windows Server 2016.  
 Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
-- Correcte intstellingen van de VM in Virtualbox
+- Correcte instellingen van de VM in Virtualbox
 - een VM aanmaken en installeren met het OS, maar geef nu de Windows Server 2016 ISO mee in plaats van de 2019 ISO.
 - shared folder aanmaken (nu voor de map `WIN-EXC-SHP`)
 
