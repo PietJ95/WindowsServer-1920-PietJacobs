@@ -17,6 +17,8 @@ Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 ## Stap 2: Scripts runnen
 **BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!  
 
-Om deze scripts te runnen is er een internet verbinding nodig, dus verifiëer dat je host machine internet heeft (dit wordt automatisch gedeeld met de VM via NAT) -> Deze NAT netwerkkaart moet uiteindelijk wel verwijderd worden.
+- Rechtermuis op `Step1` en klik op `Run with PowerShell`
+- Indien je een melding krijgt ivm. `Execution Policy Change` dan typ je `A` en druk je op `enter`
+- Meerdere reboots zijn mogelijk, telkens opnieuw inloggen met je gekozen wachtwoord
 
 **Opmerking**: Deze installatie kan heel lang duren naargelang de snelheid van je computer en het internet. Ook hier zijn meerdere reboots aanwezig.

@@ -31,6 +31,7 @@ Hier gaan we opnieuw een gedeelde map maken, volg hiervoor opnieuw de uitleg bij
 Nu kunnen we weer beginnen met de installatie. Nogmaals, indien je variabelen hebt veranderd bij WIN-DC1, zal je die nu ook moeten veranderen in deze scripts.
 
 - Rechtermuis op `Step1` en klik op `Run with PowerShell`
+- Indien je een melding krijgt ivm. `Execution Policy Change` dan typ je `A` en druk je op `enter`
 - Meerdere reboots zijn mogelijk, telkens opnieuw inloggen met je gekozen wachtwoord
 
 Als de VM niet meer reboot dan is de server nu gepromoveerd tot 2e domein controller! 

@@ -130,9 +130,10 @@ In de shared folder op de VM zie je allemaal script bestanden:
 **Opmerking**: De scripts bevatten default values voor domeinnaam, DHCP ranges, IP instellingen en wachtwoorden. Dit kan je allemaal eenvoudig aanpassen in de scripts zelf.
 
 
-Om de installatie te starten doe je rechtermuis op `Step1` en vervolgens `Run with PowerShell`.  
+ - Om de installatie te starten doe je rechtermuis op `Step1` en vervolgens `Run with PowerShell`.  
 ![step2](images/WIN-DC1/scripts2.PNG "Scripts")
 
-Alles zal nu automatisch verlopen. De computer zal 3x opnieuw opstarten, na elke reboot zal je opnieuw moeten inloggen met het wachtwoord dat je gekozen hebt (in mijn opstelling is dit `adminPass123`). Het script zal automatisch verder uitvoeren.
+- Indien je een melding krijgt ivm. `Execution Policy Change` dan typ je `A` en druk je op `enter`.  
+- Alles zal nu automatisch verlopen. De computer zal 2x opnieuw opstarten, na elke reboot zal je opnieuw moeten inloggen met het wachtwoord dat je gekozen hebt (in mijn opstelling is dit `adminPass123`). Het script zal automatisch verder uitvoeren.
 
 Na de derde reboot is de server klaar om te gebruiken, proficiat!
