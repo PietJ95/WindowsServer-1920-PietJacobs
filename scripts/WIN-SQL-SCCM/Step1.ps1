@@ -7,6 +7,10 @@ $dns = "192.168.100.10"
 New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
 Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $gw, $dns
 
+# Unblock scripts for instant use on next boot
+Unblock-File -Path Z:\Step2.ps1
+Unblock-File -Path Z:\Step3.ps1
+
 # Set NextRun script
 $RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File C:\scripts\Step2.ps1"
