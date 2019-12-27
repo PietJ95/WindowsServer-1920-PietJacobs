@@ -1,12 +1,19 @@
 # -------------------------------------------------------------------------
-# Set hostname
+# Configure network settings
 # -------------------------------------------------------------------------
-$hostname = "WIN-DC2"
-Rename-Computer -ComputerName $env:COMPUTERNAME -newName $hostname -Force
-#Unblock scripts that were downloaded from internet (Github repo)
-Unblock-File -Path C:\scripts\Step1.ps1
-Unblock-File -Path C:\scripts\Step2.ps1
-Unblock-File -Path C:\scripts\Step3.ps1
-Unblock-File -Path C:\scripts\Step4.ps1
+$ip = "192.168.100.20"
+$gw = "192.168.100.10"
+New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $gw, $ip
+
+# -------------------------------------------------------------------------
+# Join existing Domain
+# -------------------------------------------------------------------------
+
+$domainname = "piet.periode1"
+$username = "$domainname\Administrator"
+$password = "P@ss123" | ConvertTo-SecureString -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($username, $password)
+Add-Computer -DomainName $domainname -Credential $credential
 Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File C:\scripts\Step2.ps1"
-Restart-Computer
+Restart-computer

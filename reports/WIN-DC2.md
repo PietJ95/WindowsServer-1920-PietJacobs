@@ -1,9 +1,0 @@
-# Installatiehandleiding DC2
-Dit verslag bevat de uitleg om succesvol DC2 te installeren via de GUI
-## Vereisten
-- ...
-- ...
-
-## Aan de slag
-### Domein joinen
-...

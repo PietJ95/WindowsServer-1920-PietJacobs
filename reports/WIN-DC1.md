@@ -1,9 +1,0 @@
-# Installatiehandleiding DC1
-Dit verslag bevat de uitleg om succesvol DC1 te installeren via de GUI
-## Vereisten
-- ...
-- ...
-
-## Aan de slag
-### Domein joinen
-...
