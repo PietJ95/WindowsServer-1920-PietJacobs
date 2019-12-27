@@ -53,8 +53,7 @@ $ConfigDownloadLink
 $SCCMDownloadLink = "http://download.microsoft.com/download/F/B/9/FB9B10A3-4517-4E03-87E6-8949551BC313/SC_Configmgr_SCEP_1606.exe"
 Set-Location C:/
 Invoke-WebRequest $SCCMDownloadLink -OutFile SCCM.exe
-Mount-DiskImage -ImagePath .\SCCM.iso
-#$SCCMISOLocation = (Get-DiskImage ".\SCCM.iso" | Get-Volume).DriveLetter
-#Set-Location $SCCMISOLocation
+
+
 Invoke-WebRequest $ConfigDownloadLink -OutFile Config.ini
-#.\SMSSETUP\BIN\X64\setup.exe /script .\Config.ini
+#.\SMSSETUP\BIN\X64\setup.exe /script .\SCCM_config.ini
