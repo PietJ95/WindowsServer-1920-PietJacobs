@@ -1,6 +1,6 @@
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Configure network settings
-# -------------------------------------------------------------------------
+# -----------------------------------
 $ip = "192.168.100.30"
 $gw = "192.168.100.10"
 $dns = "192.168.100.10"
@@ -15,9 +15,9 @@ Unblock-File -Path Z:\Step3.ps1
 $RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File C:\scripts\Step2.ps1"
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Set hostname
-# -------------------------------------------------------------------------
+# -----------------------------------
 $hostname = "WIN-SQL-SCCM"
 Rename-Computer -ComputerName $env:COMPUTERNAME -newName $hostname -Force
 Restart-Computer

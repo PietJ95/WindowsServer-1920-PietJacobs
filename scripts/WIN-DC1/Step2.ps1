@@ -1,13 +1,13 @@
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Configure network settings
-# -------------------------------------------------------------------------
+# -----------------------------------
 $ip = "192.168.100.10"
 New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $ip
 Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $ip, "192.168.100.20"   
 
-# -------------------------------------------------------------------------
-# Install Forest (Perform on Server Core)
-# -------------------------------------------------------------------------
+# -----------------------------------
+# Install Forest
+# -----------------------------------
 $domainname = "piet.periode1"
 $netbios = "PIET"
 $password = "P@ss123" | ConvertTo-SecureString -AsPlainText -Force

@@ -1,6 +1,6 @@
-# -------------------------------------------------------------------------
-# Installing Exchange Server
-# -------------------------------------------------------------------------
+# -----------------------------------
+# Install Exchange Server
+# -----------------------------------
 $domainName = "piet.periode1"
 $exchangeDownloadLink = "https://download.microsoft.com/download/f/4/e/f4e4b3a0-925b-4eff-8cc7-8b5932d75b49/ExchangeServer2016-x64-cu14.iso"
 Set-Location C:/
@@ -15,9 +15,9 @@ Set-Location $exchangeISO
 Install-WindowsFeature NET-Framework-45-Features, RPC-over-HTTP-proxy, RSAT-Clustering, RSAT-Clustering-CmdInterface, RSAT-Clustering-Mgmt, RSAT-ADDS, RSAT-Clustering-PowerShell, Web-Mgmt-Console, WAS-Process-Model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth, Web-Digest-Auth, Web-Dir-Browsing, Web-Dyn-Compression, Web-Http-Errors, Web-Http-Logging, Web-Http-Redirect, Web-Http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service, Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content, Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation
 .\Setup.exe /M:Install /R:Mailbox, ManagementTools /IAcceptExchangeServerLicenseTerms
 
-# -------------------------------------------------------------------------
-# Configure admin accounts
-# -------------------------------------------------------------------------
+# -----------------------------------
+# Configure Organisational Unit
+# -----------------------------------
 $OrganizationalUnit = "Users SP2016"
 $Domain = "piet"
 $DomainEnding = "periode1"
@@ -30,9 +30,9 @@ New-ADUser -Path "OU=$OrganizationalUnit,DC=$Domain,DC=$DomainEnding" -Name "sql
 New-ADUser -Path "OU=$OrganizationalUnit,DC=$Domain,DC=$DomainEnding" -Name "spFarmAcc" -AccountPassword (ConvertTo-SecureString "Password123" –AsPlaintext –Force) -Description "SharePoint Farm Account" -ChangePasswordAtLogon:$False -CannotChangePassword:$True -PasswordNeverExpires:$True -Enabled:$True  
 New-ADUser -Path "OU=$OrganizationalUnit,DC=$Domain,DC=$DomainEnding" -Name "spAppPool" -AccountPassword (ConvertTo-SecureString "Password123" –AsPlaintext –Force) -Description "SharePoint Application Pool Account" -ChangePasswordAtLogon:$False -CannotChangePassword:$True -PasswordNeverExpires:$True -Enabled:$True  
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Configure admin accounts
-# -------------------------------------------------------------------------
+# -----------------------------------
 $domain = "piet.periode1"
 $strComputer = "localhost"
 $username = "spAdmin"
@@ -42,14 +42,14 @@ $Group = $computer.psbase.children.find("administrators")
 $Group.name
 $Group.Add("WinNT://" + $domain + "/" + $username)
 
-# -------------------------------------------------------------------------
-# Cofigure role
-# -------------------------------------------------------------------------
+# -----------------------------------
+# Configure roles
+# -----------------------------------
 Write-Host " - Importing Module Servermanager..."  
 Import-Module Servermanager
 
 Write-Host " - Installing .NET Framework Feature..."  
-get-windowsfeature|where{$_.name -eq "NET-Framework-Core"}|install-windowsfeature –Source d:\sources\sxs  
+get-windowsfeature|where{$_.name -eq "NET-Framework-Core"}|install-windowsfeature -Source d:\sources\sxs  
 get-windowsfeature|where{$_.name -eq "NET-HTTP-Activation"}|install-windowsfeature  
 get-windowsfeature|where{$_.name -eq "NET-Non-HTTP-Activ"}|install-windowsfeature  
 get-windowsfeature|where{$_.name -eq "NET-WCF-HTTP-Activation45"}|install-windowsfeature
@@ -111,15 +111,15 @@ get-windowsfeature|where{$_.name -eq "WAS-Config-APIs"}|install-windowsfeature
 Write-Host " - Installing Windows Identity Foundation Feature..."  
 get-windowsfeature|where{$_.name -eq "Windows-Identity-Foundation"}|install-windowsfeature
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Give spAdmin the proper rights
-# -------------------------------------------------------------------------
+# -----------------------------------
 #SQL QUERY EXECUTED ON OTHER SERVER
 
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Download Sharepoint & Prerequisites
-# -------------------------------------------------------------------------
+# -----------------------------------
 # The top-level folder in the installation folder tree
 $RootFolder = "C:\SharePointInstall"
 
@@ -243,15 +243,15 @@ if($rc -ne -1)
 }
 
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Install Sharepoint
-# -------------------------------------------------------------------------
+# -----------------------------------
 Start-Process "d:\setup.exe" -ArgumentList "/config `"$PSScriptRoot\sharepoint.xml`"" -WindowStyle Minimized -wait 
 
 
-# -------------------------------------------------------------------------
+# -----------------------------------
 # Create Sharepoint farm
-# -------------------------------------------------------------------------
+# -----------------------------------
 $DBServer = 'WIN-SQL-SCCM.piet.periode1'
 $ConfigDB = 'spFarmConfiguration'
 $CentralAdminContentDB = 'spCentralAdministration'
