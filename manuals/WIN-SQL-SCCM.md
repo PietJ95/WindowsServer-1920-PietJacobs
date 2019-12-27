@@ -14,6 +14,8 @@ Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 - Correcte instellingen van de VM in Virtualbox
 - shared folder aanmaken (nu voor de map `WIN-SQL-SCCM`)
 
+---
+
 ## Stap 2: Scripts runnen
 **BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!  
 

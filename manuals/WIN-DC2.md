@@ -25,6 +25,8 @@ Na het rebooten kom je terug op een wizard waar je wat instellingen moet aanpass
 ### Shared folder
 Hier gaan we opnieuw een gedeelde map maken, volg hiervoor opnieuw de uitleg bij DC1. De enige verandering is dat we nu de map `WIN-DC2` gaan mounten. [Handleiding shared folder](./WIN-DC1.md#Stap3) 
 
+--- 
+
 ## Stap 2: Uitvoeren scripts
 **BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!
 
@@ -35,3 +37,5 @@ Nu kunnen we weer beginnen met de installatie. Nogmaals, indien je variabelen he
 - Meerdere reboots zijn mogelijk, telkens opnieuw inloggen met je gekozen wachtwoord
 
 Als de VM niet meer reboot dan is de server nu gepromoveerd tot 2e domein controller! 
+
+**EXTRA**: Je kan nu nog deze server als een Failover DHCP server configureren. Dit kan je eenvoudig doen door op `WIN-DC1` het scriptje `Failover.ps1` te runnen.

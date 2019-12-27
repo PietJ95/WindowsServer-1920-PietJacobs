@@ -107,6 +107,7 @@ In Virtualbox:
     - Laat deze VM voorlopig uit staan, we komen hier later op terug
 
 **Opmerking**: Idealiter kloon je de VM 2x (aangezien we deze nogmaals gaan nodig hebben voor `WIN-SQL-SCCM`).
+
 ---
 
 ## Stap 3: Installatie van DC1

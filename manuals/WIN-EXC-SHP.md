@@ -19,6 +19,8 @@ Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 - een VM aanmaken en installeren met het OS, maar geef nu de Windows Server 2016 ISO mee in plaats van de 2019 ISO.
 - shared folder aanmaken (nu voor de map `WIN-EXC-SHP`)
 
+---
+
 ## Stap 2: Scripts runnen
 **BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!
 
