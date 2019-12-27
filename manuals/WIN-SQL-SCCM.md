@@ -24,3 +24,11 @@ Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 - Meerdere reboots zijn mogelijk, telkens opnieuw inloggen met je gekozen wachtwoord
 
 **Opmerking**: Deze installatie kan heel lang duren naargelang de snelheid van je computer en het internet. Ook hier zijn meerdere reboots aanwezig.
+
+Als de installatie afgerond is moet er nog 1 iets gebeuren, er moet een sql script manueel uitgevoerd worden:
+- Open `rights` met `SSMS 18`
+![step1](images/WIN-SQL-SCCM/sqlScript1.PNG)
+- Selecteer `Browse for more...` bij `Server name` en selecteer `WIN-SQL-SCCM\SQLEXPRESS`
+- Klik op `Connect`
+- Je ziet nu de query, klik nu op `Execute` om het uit te voeren.
+- Klaar!

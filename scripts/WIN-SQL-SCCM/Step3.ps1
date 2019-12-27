@@ -11,6 +11,9 @@ choco install sql-server-management-studio -y
 choco install sql-server-express --params='/ConfigurationFile="SQL_config.ini"' -y
 choco install webdeploy -y
 
+# Execute query for SharePoint
+invoke-sqlcmd -Servername WIN-SQL-SCCM.piet.periode1 -inputFile "Z:\rights.sql"
+
 # -----------------------------------
 # Install requirements for SCCM
 # -----------------------------------
