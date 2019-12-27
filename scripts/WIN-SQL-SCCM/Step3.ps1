@@ -7,9 +7,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 # -------------------------------------------------------------------------
 # Install SQL
 # -------------------------------------------------------------------------
-choco install sql-server-management-studio
-choco install sql-server-express
-choco install webdeploy
+choco install sql-server-management-studio -y
+choco install sql-server-express --params='/ConfigurationFile="SQL_config.ini"' -y
+choco install webdeploy -y
 
 # -------------------------------------------------------------------------
 # Install requirements for SCCM
