@@ -23,9 +23,8 @@ De VM is nu aangemaakt, maar er moeten nog wat instellingen gewijzigd worden:
 - Rechtermuis op de VM en klik op `Instellingen`
 - In het tabblad `Systeem` zorg je ervoor dat `Optisch` aangevinkt en bovenaan staat (met de pijltjes)
 - Onder het tabblad `Netwerk` klik je op `Adapter 2`, vink dit aan en kies een Host-Only Adapter (onthoudt het nummer)
-- Nu klik je op het Tabblad `Opslag` en vervolgens op de Lege schijf die staat afgebeeld. 
+- Nu klik je op het Tabblad `Opslag` en vervolgens op de Lege schijf die staat afgebeeld.
     - Hier geef je nu je Windows Server 2019 ISO file mee die je op je pc hebt staan. (Zie afbeelding)
-
 ![step5](images/WIN-DC1/VM5.PNG "ISO file meegeven")  
 
 - Klik op `OK`
@@ -33,11 +32,10 @@ De VM is nu aangemaakt, maar er moeten nog wat instellingen gewijzigd worden:
 ### Netwerk correct instellen
 Het is belangrijk dat de adapters juist zijn zodat er een virtueel netwerk beschikbaar is.
 
-- In VirtualBox, ga naar het tabblad Netwerk (zie afbeelding)
+- In VirtualBox, ga naar het tabblad `Netwerk` (zie afbeelding)  
 ![step5](images/WIN-DC1/Netwerk1.PNG "Netwerk instellen")
 
 - Zorg ervoor dat de Host-Only adapter die je daarnet hebt gekozen een correct IP heeft, stel deze in als volgt:
-
 ![step5](images/WIN-DC1/Netwerk2.PNG "Netwerk instellen deel 2")
 
 **Opmerking**: deze adapter moet nu voor elke server op hetzelfde # ingesteld worden.
@@ -55,7 +53,7 @@ Selecteer `Dutch (Belgium)` als time and currency format, de keyboard layout wor
 Klik `Next` en vervolgens `Install now`
 
 ### Versie kiezen
-Selecteer `Windows Server 2019 Standard Evaluation (Desktop Experience)` dit zorgt voor de handige Windows GUI 
+Selecteer `Windows Server 2019 Standard Evaluation (Desktop Experience)` dit zorgt voor de handige Windows GUI
 ![step2](images/WIN-DC1/Installatie2.PNG "Versie kiezen")
 
 - Klik vervolgens op `Next`
@@ -94,8 +92,8 @@ Dubbelklik op `VBoxWindowsAdditions` en doorloop heel deze Wizard zonder iets te
 Op het einde wordt je VM gereboot.
 
 ### Hoe klonen?
-In Virtualbox: 
-- Zet de VM eerst uit: 
+In Virtualbox:
+- Zet de VM eerst uit:
     - Rechtermuis op de net aangemaakte VM
     - `Sluiten` -> `Uitzetten`
 - Klonen
@@ -137,4 +135,4 @@ In de shared folder op de VM zie je allemaal script bestanden:
 - Indien je een melding krijgt ivm. `Execution Policy Change` dan typ je `A` en druk je op `enter`.  
 - Alles zal nu automatisch verlopen. De computer zal 2x opnieuw opstarten, na elke reboot zal je opnieuw moeten inloggen met het wachtwoord dat je gekozen hebt (in mijn opstelling is dit `adminPass123`). Het script zal automatisch verder uitvoeren.
 
-Na de derde reboot is de server klaar om te gebruiken, proficiat!
+Als er geen reboots meer zijn dan is de server klaar om te gebruiken, proficiat!
