@@ -26,8 +26,9 @@ Install-WindowsFeature Web-Asp-Net
 Install-WindowsFeature Web-Asp-Net45
 Install-WindowsFeature NET-HTTP-Activation
 Install-WindowsFeature NET-Non-HTTP-Activ
-Install-WindowsFeature WDS
+Install-WindowsFeature WDS -IncludeManagementTools
 dism /online /enable-feature /featurename:NetFX3 /all /Source:d:\sources\sxs /LimitAccess
+wdsutil /initialize-server /remInst:"C:\remInstall"
 
 
 # SCCM
@@ -42,6 +43,13 @@ ADK_setup.exe /installpath "C:\Program Files (x86)\Windows Kits\10" /features Op
 # Install WSUS Features
 # -------------------------------------------------------------------------
 Install-WindowsFeature -Name UpdateServices-Services, UpdateServices-DB -IncludeManagementTools
+
+# -------------------------------------------------------------------------
+# Setup WDS Image
+# -------------------------------------------------------------------------
+Import-WdsBootImage -Path "Z:\files\boot.wim"
+New-WdsInstallImageGroup -Name "Clients"
+Import-WdsInstallImage -ImageGroup "Clients" -Path "Z:\files\install.wim" -ImageName "Windows 10 Pro N"
 
 # -------------------------------------------------------------------------
 # Installing SCCM 
