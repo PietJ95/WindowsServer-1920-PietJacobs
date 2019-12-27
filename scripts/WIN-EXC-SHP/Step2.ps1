@@ -4,8 +4,8 @@
 $ip = "192.168.100.40" 
 $dns = "192.168.100.10"
 $gw = "192.168.100.10"
-New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $gw, $dns
+New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $gw, $dns
 
 # -------------------------------------------------------------------------
 # Join existing Domain
