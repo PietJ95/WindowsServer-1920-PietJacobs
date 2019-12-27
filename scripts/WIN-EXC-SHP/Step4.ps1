@@ -252,7 +252,7 @@ Start-Process "d:\setup.exe" -ArgumentList "/config `"$PSScriptRoot\sharepoint.x
 # -------------------------------------------------------------------------
 # Create Sharepoint farm
 # -------------------------------------------------------------------------
-$DBServer = 'WIN-SQL-SCCM'
+$DBServer = 'WIN-SQL-SCCM.piet.periode1'
 $ConfigDB = 'spFarmConfiguration'
 $CentralAdminContentDB = 'spCentralAdministration'
 $CentralAdminPort = '2016'
