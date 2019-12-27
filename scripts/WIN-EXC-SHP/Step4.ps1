@@ -259,10 +259,11 @@ $CentralAdminPort = '2016'
 $PassPhrase = 'Password123'
 $SecPassPhrase = ConvertTo-SecureString $PassPhrase –AsPlaintext –Force
 
-$FarmAcc = 'domain\spFarmAcc'
+$FarmAcc = 'PIET\spFarmAcc'
 $FarmPassword = 'Password123'
 $FarmAccPWD = ConvertTo-SecureString $FarmPassword  –AsPlaintext –Force
-$cred_FarmAcc = New-Object System.Management.Automation.PsCredential $FarmAcc,$FarmAccPWD --WebFrontEnd, Application, DistributedCache, Search, Custom, SingleServerFarm
+$cred_FarmAcc = New-Object System.Management.Automation.PsCredential $FarmAcc,$FarmAccPWD 
+#--WebFrontEnd, Application, DistributedCache, Search, Custom, SingleServerFarm
 $ServerRole = "Custom"
 
 
