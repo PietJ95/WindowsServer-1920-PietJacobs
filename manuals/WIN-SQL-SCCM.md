@@ -6,12 +6,17 @@ Prerequisites:
 
 
 ## Stap 1: VM aanmaken & configureren
+### Adapters instellen
+Deze VM mag maar 1 adapter hebben. Ga naar `Instellingen` en onder het tabblad `Netwerk` verander je de `NAT`-interface naar `Host-Only Adapter` (hetzelfde nummer als bij alle voorgaande VM's).
  
+### Andere instellingen 
 Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 - Correcte instellingen van de VM in Virtualbox
 - shared folder aanmaken (nu voor de map `WIN-SQL-SCCM`)
 
 ## Stap 2: Scripts runnen
+**BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!  
+
 Om deze scripts te runnen is er een internet verbinding nodig, dus verifiëer dat je host machine internet heeft (dit wordt automatisch gedeeld met de VM via NAT) -> Deze NAT netwerkkaart moet uiteindelijk wel verwijderd worden.
 
 **Opmerking**: Deze installatie kan heel lang duren naargelang de snelheid van je computer en het internet. Ook hier zijn meerdere reboots aanwezig.

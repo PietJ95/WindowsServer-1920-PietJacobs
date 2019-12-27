@@ -9,6 +9,9 @@ Prerequisites:
 We werken nu verder met de kloon die je hebt gemaakt bij DC1.  
 Om niet in herhaling te vallen ga ik soms verwijzen naar stappen die we reeds gezien hebben.
 
+### Adapters instellen
+Deze VM mag maar 1 adapter hebben. Ga naar `Instellingen` en onder het tabblad `Netwerk` verander je de `NAT`-interface naar `Host-Only Adapter` (hetzelfde nummer als bij WIN-DC1).
+
 ### Nieuwe SID (Security Identifier) aanmaken
 Omdat dit een kloon is, is het belangrijk dat we de SID vernieuwen, of anders zou deze VM het domein niet kunnen joinen.
 
@@ -23,6 +26,8 @@ Na het rebooten kom je terug op een wizard waar je wat instellingen moet aanpass
 Hier gaan we opnieuw een gedeelde map maken, volg hiervoor opnieuw de uitleg bij DC1. De enige verandering is dat we nu de map `WIN-DC2` gaan mounten. [Handleiding shared folder](./WIN-DC1.md#Stap3) 
 
 ## Stap 2: Uitvoeren scripts
+**BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!
+
 Nu kunnen we weer beginnen met de installatie. Nogmaals, indien je variabelen hebt veranderd bij WIN-DC1, zal je die nu ook moeten veranderen in deze scripts.
 
 - Rechtermuis op `Step1` en klik op `Run with PowerShell`

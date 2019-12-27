@@ -30,6 +30,19 @@ De VM is nu aangemaakt, maar er moeten nog wat instellingen gewijzigd worden:
 
 - Klik op `OK`
 
+### Netwerk correct instellen
+Het is belangrijk dat de adapters juist zijn zodat er een virtueel netwerk beschikbaar is.
+
+- In VirtualBox, ga naar het tabblad Netwerk (zie afbeelding)
+![step5](images/WIN-DC1/Netwerk1.PNG "Netwerk instellen")
+
+- Zorg ervoor dat de Host-Only adapter die je daarnet hebt gekozen een correct IP heeft, stel deze in als volgt:
+
+![step5](images/WIN-DC1/Netwerk2.PNG "Netwerk instellen deel 2")
+
+**Opmerking**: deze adapter moet nu voor elke server op hetzelfde # ingesteld worden.
+
+
 Je bent nu klaar om de VM op te starten en vervolgens naar Stap 2 te gaan.
 
 ---

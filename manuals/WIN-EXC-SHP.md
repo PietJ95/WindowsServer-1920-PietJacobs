@@ -6,6 +6,11 @@ Prerequisites:
 
 
 ## Stap 1: VM aanmaken & configureren
+
+### Adapters instellen
+Deze VM mag maar 1 adapter hebben. Ga naar `Instellingen` en onder het tabblad `Netwerk` verander je de `NAT`-interface naar `Host-Only Adapter` (hetzelfde nummer als bij WIN-DC1).
+
+### Andere instellingen
 In de opgave stond er dat we een Windows Server 2019 OS moesten runnen met Exchange 2016 op. Helaas is dit niet supported door Windows: https://docs.microsoft.com/en-us/windows-server/get-started-19/app-compat-19
 
 We gaan dus gebruik maken van Windows Server 2016.  
@@ -15,6 +20,8 @@ Volg de [handleiding](./WIN-DC1.md#Stap1) van WIN-DC1 voor:
 - shared folder aanmaken (nu voor de map `WIN-EXC-SHP`)
 
 ## Stap 2: Scripts runnen
+**BELANGRIJK**: `WIN-DC1` moet up en running zijn voor een correcte installatie!
+
 Om deze scripts te runnen is er een internet verbinding nodig, dus verifiëer dat je host machine internet heeft (dit wordt automatisch gedeeld met de VM via NAT) -> Deze NAT netwerkkaart moet uiteindelijk wel verwijderd worden.
 
 **Opmerking**: Deze installatie kan heel lang duren naargelang de snelheid van je computer en het internet. Ook hier zijn meerdere reboots aanwezig.
