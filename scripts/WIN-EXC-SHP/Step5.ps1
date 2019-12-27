@@ -98,10 +98,7 @@ get-windowsfeature|where{$_.name -eq "Windows-Identity-Foundation"}|install-wind
 # -------------------------------------------------------------------------
 # Give spAdmin the proper rights
 # -------------------------------------------------------------------------
-EXEC sp_addsrvrolemember [domain\spAdmin], 'securityadmin';  
-GO  
-EXEC sp_addsrvrolemember [domain\spAdmin], 'dbcreator';  
-GO  
+#SQL QUERY EXECUTED ON OTHER SERVER
 
 
 # -------------------------------------------------------------------------
@@ -128,26 +125,24 @@ $Prereqs2Folder = "$RootFolder\SharePoint_Prerequisites\PrerequisiteInstaller"
 
 # Specify download url's for SharePoint 2016 prerequisites
 $Downloads = @{
-            # Microsoft SQL Server 2012 Native Client 64-bit edition – ENU\x64\sqlncli.MSI - http://go.microsoft.com/fwlink/p/?LinkId=239568
-            "https://download.microsoft.com/download/F/E/D/FEDB200F-DE2A-46D8-B661-D019DFE9D470/ENU/x64/sqlncli.msi" = "$Prereqs2Folder\sqlncli-2012.msi";
+            # AppFabric
+            "https://download.microsoft.com/download/F/1/0/F1093AF6-E797-4CA8-A9F6-FC50024B385C/AppFabric-KB3092423-x64-DEU.exe" = "$Prereqs1Folder\AppFabric-KB3092423-x64-DEU.exe";
             # Microsoft ODBC Driver 11 for SQL Server http://go.microsoft.com/fwlink/?LinkId=618410
-            "https://download.microsoft.com/download/5/7/2/57249A3A-19D6-4901-ACCE-80924ABEB267/1033/amd64/msodbcsql.msi" = "$Prereqs2Folder\msodbcsql.msi";
+            "https://download.microsoft.com/download/5/7/2/57249A3A-19D6-4901-ACCE-80924ABEB267/ENU/x64/msodbcsql.msi" = "$Prereqs2Folder\msodbcsql.msi";
             # Microsoft Sync Framework Runtime v1.0 SP1 (x64) http://go.microsoft.com/fwlink/?LinkId=618411
-            "https://download.microsoft.com/download/E/0/0/E0060D8F-2354-4871-9596-DC78538799CC/Synchronization.msi" = "$Prereqs2Folder\Synchronization.msi"; 
-            # Windows Server App Fabric http://go.microsoft.com/fwlink/?LinkId=618412
-            "https://download.microsoft.com/download/A/6/7/A678AB47-496B-4907-B3D4-0A2D280A13C0/WindowsServerAppFabricSetup_x64.exe" = "$Prereqs2Folder\WindowsServerAppFabricSetup_x64.exe"; 
+            "https://download.microsoft.com/download/E/0/0/E0060D8F-2354-4871-9596-DC78538799CC/Synchronization.msi" = "$Prereqs2Folder\Synchronization.msi";
             # Windows Identity Foundation (KB974405)
-            "http://download.microsoft.com/download/D/7/2/D72FD747-69B6-40B7-875B-C2B40A6B2BDD/Windows6.1-KB974405-x64.msu" = "$Prereqs2Folder\Windows6.1-KB974405-x64.msu"; 
+            "http://download.microsoft.com/download/D/7/2/D72FD747-69B6-40B7-875B-C2B40A6B2BDD/Windows6.1-KB974405-x64.msu" = "$Prereqs2Folder\Windows6.1-KB974405-x64.msu";
             # Microsoft Identity Extensions
             # http://go.microsoft.com/fwlink/?LinkID=252368
             "http://download.microsoft.com/download/0/1/D/01D06854-CA0C-46F1-ADBA-EBF86010DCC6/rtm/MicrosoftIdentityExtensions-64.msi" = "$Prereqs2Folder\MicrosoftIdentityExtensions-64.msi";
             # Microsoft Information Protection and Control Client http://go.microsoft.com/fwlink/?LinkID=544913
-            # MSI version (does not satisfy Prerequisite Installer): 
+            # MSI version (does not satisfy Prerequisite Installer):
             #     http://go.microsoft.com/fwlink/?LinkId=320724
             #     https://download.microsoft.com/download/9/1/D/91DA8796-BE1D-46AF-8489-663AB7811517/setup_msipc_x64.msi
             "http://download.microsoft.com/download/3/C/F/3CF781F5-7D29-4035-9265-C34FF2369FA2/setup_msipc_x64.exe" = "$Prereqs2Folder\setup_msipc_x64.exe";
             # Microsoft WCF Data Services 5.6 required for SharePoint 2013 SP1 http://go.microsoft.com/fwlink/?LinkId=320724
-            "https://download.microsoft.com/download/1/C/A/1CAA41C7-88B9-42D6-9E11-3C655656DAB1/WcfDataServices.exe" = "$Prereqs2Folder\WcfDataServices56.exe"; 
+            "https://download.microsoft.com/download/1/C/A/1CAA41C7-88B9-42D6-9E11-3C655656DAB1/WcfDataServices.exe" = "$Prereqs2Folder\WcfDataServices56.exe";
             # .NET Framework 4.6 Offline Installer http://go.microsoft.com/fwlink/?LinkId=618401
             "https://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" = "$Prereqs2Folder\NDP46-KB3045557-x86-x64-AllOS-ENU.exe";
             # Cumulative Update Package 7 for AppFabric 1.1 for Windows Server https://support.microsoft.com/en-us/kb/3092423
@@ -160,24 +155,14 @@ $Downloads = @{
             "http://silverlight.dlservice.microsoft.com/download/F/8/C/F8C0EACB-92D0-4722-9B18-965DD2A681E9/30514.00/Silverlight_x64.exe" = "$Prereqs3Folder\Silverlight_x64.exe";
             # Exchange Web Services Managed API, version 1.2 http://go.microsoft.com/fwlink/p/?linkid=238668
             "https://download.microsoft.com/download/7/6/1/7614E07E-BDB8-45DD-B598-952979E4DA29/EwsManagedApi.msi" = "$Prereqs3Folder\EwsManagedApi.msi";
-            # Update for Windows 8.1 for x64-based Systems (KB2919442) https://www.microsoft.com/en-us/download/details.aspx?id=42162
-            # a prerequisite for the Windows Server 2012 R2 Update
-            "https://download.microsoft.com/download/C/F/8/CF821C31-38C7-4C5C-89BB-B283059269AF/Windows8.1-KB2919442-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2919442-x64.msu";
-            # Windows Server 2012 R2 Update (KB2919355) https://support.microsoft.com/en-us/kb/2919355
             # Windows Server 2012 R2 clearcompressionflag.exe
             "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/clearcompressionflag.exe" = "$Prereqs1Folder\clearcompressionflag.exe";
-            # Windows Server 2012 R2 Windows8.1-KB2919355-x64.msu 
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2919355-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2919355-x64.msu";
-            # Windows Server 2012 R2 Windows8.1-KB2932046-x64.msu
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2932046-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2932046-x64.msu";
-            # Windows Server 2012 R2 Windows8.1-KB2934018-x64.msu
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2934018-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2934018-x64.msu";
-            # Windows Server 2012 R2 Windows8.1-KB2937592-x64.msu
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2937592-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2937592-x64.msu";
-            # Windows Server 2012 R2 Windows8.1-KB2938439-x64.msu
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2938439-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2938439-x64.msu";
-            # Windows Server 2012 R2 Windows8.1-KB2959977-x64.msu
-            "https://download.microsoft.com/download/2/5/6/256CCCFB-5341-4A8D-A277-8A81B21A1E35/Windows8.1-KB2959977-x64.msu" = "$Prereqs1Folder\Windows8.1-KB2959977-x64.msu";
+
+            "https://download.microsoft.com/download/A/6/7/A678AB47-496B-4907-B3D4-0A2D280A13C0/WindowsServerAppFabricSetup_x64.exe" = "$Prereqs1Folder\WindowsServerAppFabricSetup_x64.exe";
+
+            "https://download.microsoft.com/download/B/E/D/BED73AAC-3C8A-43F5-AF4F-EB4FEA6C8F3A/ENU/x64/sqlncli.msi" = "$Prereqs1Folder\sqlncli.msi";
+            "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU4/vcredist_arm.exe" = "$Prereqs1Folder\vcredist_arm.exe";
+            #"https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe" = "$Prereqs1Folder\vcredist_x64.exe";
             } 
 
 
