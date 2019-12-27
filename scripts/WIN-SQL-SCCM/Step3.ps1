@@ -46,14 +46,17 @@ Install-WindowsFeature -Name UpdateServices-Services, UpdateServices-DB -Include
 # -------------------------------------------------------------------------
 # Installing SCCM 
 # -------------------------------------------------------------------------
-# Add the downloadlink for the Config.ini file here!
-# Be sure to configure the necessary parameters (Domain; et al.) in the Config.ini!
-$ConfigDownloadLink
-# Add the downloadlink for the SCCM Server iso here!
 $SCCMDownloadLink = "http://download.microsoft.com/download/F/B/9/FB9B10A3-4517-4E03-87E6-8949551BC313/SC_Configmgr_SCEP_1606.exe"
 Set-Location C:/
 Invoke-WebRequest $SCCMDownloadLink -OutFile SCCM.exe
 
+#Install files
+.\SC_Configmgr_SCEP_1606.exe /passive /norestart /silent
 
-Invoke-WebRequest $ConfigDownloadLink -OutFile Config.ini
-#.\SMSSETUP\BIN\X64\setup.exe /script .\SCCM_config.ini
+#Copy config file from shared folder to C drive
+Copy-Item "Z:\SCCM_config.ini" -Destination "C:\"
+
+#Perform installation with config file
+.\SC_Configmgr_SCEP_1606\SMSSETUP\BIN\X64\setup.exe /script "C:\SCCM_config.ini" /passive /norestart /silent
+
+#Adobe reader script here
