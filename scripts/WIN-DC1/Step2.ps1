@@ -1,41 +1,19 @@
 # -------------------------------------------------------------------------
-# Configure DNS
-# -------------------------------------------------------------------------
-$Forwarder = "8.8.8.8"
-Add-DnsServerForwarder -IPAddress $Forwarder -PassThru
-
-# -------------------------------------------------------------------------
-# Configure DHCP
+# Configure network settings
 # -------------------------------------------------------------------------
 $ip = "192.168.100.10"
-$startScope = "192.168.100.100"
-$endScope = "192.168.100.250"
-Install-WindowsFeature -Name 'DHCP' -IncludeManagementTools 
-Add-DhcpServerV4Scope -Name "DHCP Scope" -StartRange $startScope -EndRange $endScope -SubnetMask 255.255.255.0 
-Set-DhcpServerV4OptionValue -DnsServer $ip -Router $ip 
-Set-DhcpServerv4Scope -ScopeId $ip -LeaseDuration 1.00:00:00 
-Restart-Service DHCPServer -Force  
-#Authorize the DHCP server for our domain
-Add-DhcpServerInDC -DnsName WIN-DC1.piet.periode1
+New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress $ip -PrefixLength 24 -DefaultGateway $ip
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses $ip, "192.168.100.20"   
 
 # -------------------------------------------------------------------------
-# Install RRAS
+# Install Forest (Perform on Server Core)
 # -------------------------------------------------------------------------
-Install-WindowsFeature Routing -IncludeManagementTools
+$domainname = "piet.periode1"
+$netbios = "PIET"
+$password = "P@ss123" | ConvertTo-SecureString -AsPlainText -Force
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools 
+Install-ADDSForest -DomainName $domainname -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "7" -DomainNetbiosName $netbios -ForestMode "7" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$True -SysvolPath "C:\Windows\SYSVOL" -SafeModeAdministratorPassword:($password) -Force:$true 
+$RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
+Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File Z:\Step3.ps1"
+Restart-computer
 
-# -------------------------------------------------------------------------
-# Configure RRAS
-# -------------------------------------------------------------------------
-Install-RemoteAccess -VpnType Vpn
-$ExternalInterface = "Ethernet 2"
-$InternalInterface = "Ethernet"
-cmd.exe /c "netsh routing ip nat add interface $ExternalInterface"
-cmd.exe /c "netsh routing ip nat set interface $ExternalInterface mode=full"
-cmd.exe /c "netsh routing ip nat add interface $InternalInterface"
-
-# -------------------------------------------------------------------------
-# Set Hostname
-# -------------------------------------------------------------------------
-$hostname = "WIN-DC1"
-Rename-Computer -ComputerName $env:COMPUTERNAME -newName $hostname -Force
-Restart-Computer

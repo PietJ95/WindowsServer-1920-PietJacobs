@@ -12,5 +12,6 @@ Invoke-WebRequest $VCRedistDownloadLink -OutFile VCRedist.exe
 .\UCMA.exe -q
 .\DOTNET.exe /passive /norestart
 .\VCRedist.exe /passive /norestart
+$RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File Z:\Step4.ps1"
 Restart-Computer

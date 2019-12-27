@@ -1,17 +1,10 @@
-﻿# -------------------------------------------------------------------------
-# Configure DNS
 # -------------------------------------------------------------------------
-$Forwarder = "8.8.8.8"
-Add-DnsServerForwarder -IPAddress $Forwarder -PassThru
-
+# Install Domain Controller (Perform on Server Core)
 # -------------------------------------------------------------------------
-# Install DHCP
-# -------------------------------------------------------------------------
-Install-WindowsFeature -Name 'DHCP' -IncludeManagementTools;
-
-# -------------------------------------------------------------------------
-# Set hostname
-# -------------------------------------------------------------------------
-$hostname = "WIN-DC2"
-Rename-Computer -ComputerName $env:COMPUTERNAME -newName $hostname -Force
-Restart-Computer
+$domainname = "piet.periode1"
+$password = "P@ss123" | ConvertTo-SecureString -AsPlainText -Force
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools 
+Install-ADDSDomainController -DomainName $domainname -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$True -SysvolPath "C:\Windows\SYSVOL" -SafeModeAdministratorPassword:($password) -Force:$true 
+$RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
+Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File Z:\Step4.ps1"
+Restart-computer
