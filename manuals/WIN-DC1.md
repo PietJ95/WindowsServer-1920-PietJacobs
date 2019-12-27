@@ -63,7 +63,22 @@ Indien u deze handleiding volgt om een eigen netwerk op te stellen, gelieve dit 
 
 
 ## Klonen van de VM
-Om ons leven wat makkelijker te maken is het nu aangeraden om een kloon te nemen van de net opgezette VM. De reden hiervoor is dat we nu niet meer op deze lange Windows-installatie moeten wachten.
+Om ons leven wat makkelijker te maken is het nu aangeraden om een kloon te nemen van de net opgezette VM. De reden hiervoor is dat we nu niet meer op deze lange Windows-installatie moeten wachten.  
+
+### Guest Additions installeren
+Eerst en vooral gaan we nog snel VirtualBox Guest Additions installeren, dit is op iedere host nodig om aan de shared folder te kunnen.
+
+Eens de VM is opgestart doe je het volgende om Guest Additions te installeren:
+
+![step1](images/WIN-DC1/Sharedfolder1.PNG "Guest additions")
+
+De image is nu gemount, ga naar je C-schijf en open de CD-Image.
+Je zou nu hier terecht moeten komen:
+
+![step2](images/WIN-DC1/Sharedfolder2.PNG "Guest additions step 2")
+
+Dubbelklik op `VBoxWindowsAdditions` en doorloop heel deze Wizard zonder iets te veranderen.  
+Op het einde wordt je VM gereboot.
 
 ### Hoe klonen?
 In Virtualbox: 
@@ -83,19 +98,6 @@ In Virtualbox:
 
 ## Stap 3: Installatie van DC1
 Nu gaan we aan de slag met de scripts, eerst en vooral moeten deze scripts op de VM's zelf terecht komen. We pakken dit als volgt aan.
-
-### Guest Additions installeren
-Eens de VM is opgestart doe je het volgende om Guest Additions te installeren:
-
-![step1](images/WIN-DC1/Sharedfolder1.PNG "Guest additions")
-
-De image is nu gemount, ga naar je C-schijf en open de CD-Image.
-Je zou nu hier terecht moeten komen:
-
-![step2](images/WIN-DC1/Sharedfolder2.PNG "Guest additions step 2")
-
-Dubbelklik op `VBoxWindowsAdditions` en doorloop heel deze Wizard zonder iets te veranderen.  
-Op het einde wordt je VM gereboot.
 
 ### Shared folder mounten
 - Zet de VM terug uit, rechtermuis op de VM en ga naar `Instellingen`.
